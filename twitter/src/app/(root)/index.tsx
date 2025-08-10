@@ -43,7 +43,6 @@ export default function Page() {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        {/* HEADER */}
         <View style={styles.header}>
           {/* LEFT */}
           <View style={styles.headerLeft}>
@@ -76,8 +75,6 @@ export default function Page() {
         </View>
       </View>
 
-      {/* FlatList is a performant way to render long lists in React Native. */}
-      {/* it renders items lazily — only those on the screen. */}
       <FlatList
         style={styles.transactionsList}
         contentContainerStyle={styles.transactionsListContent}
