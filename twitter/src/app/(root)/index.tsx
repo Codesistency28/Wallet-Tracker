@@ -1,4 +1,5 @@
-import {  useRouter } from "expo-router";
+import { SignedIn, SignedOut, useUser } from "@clerk/clerk-expo";
+import { Link, useRouter } from "expo-router";
 import { Alert, FlatList, Image, RefreshControl, Text, TouchableOpacity, View } from "react-native";
 import { SignOutButton } from "@/src/components/signOutButton";
 import { useTransactions } from "../../hooks/useTransactions";
@@ -12,11 +13,12 @@ import NoTransactionsFound from "@/src/components/NoTransactionFOund";
 
 
 export default function Page() {
+  const { user } = useUser();
   const router = useRouter();
   const [refreshing, setRefreshing] = useState(false);
 
   const { transactions, summary, isLoading, loadData, deleteTransaction } = useTransactions(
-    "shawn333"
+    user.id
   );
 
   const onRefresh = async () => {
@@ -53,7 +55,7 @@ export default function Page() {
             <View style={styles.welcomeContainer}>
               <Text style={styles.welcomeText}>Welcome,</Text>
               <Text style={styles.usernameText}>
-               shawn
+                {user?.emailAddresses[0]?.emailAddress.split("@")[0]}
               </Text>
             </View>
           </View>
