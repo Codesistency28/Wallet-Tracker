@@ -43,7 +43,6 @@ export default function Page() {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        {/* HEADER */}
         <View style={styles.header}>
           {/* LEFT */}
           <View style={styles.headerLeft}>
