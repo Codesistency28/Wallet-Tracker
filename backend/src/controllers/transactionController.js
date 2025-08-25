@@ -3,6 +3,28 @@ import { sql } from "../config/db.js";
 
 
 
+export const addTransaction = async(req, res) => {
+    try {
+        const { title, amount, category, user_id } = req.body;
+
+        if (!title || !user_id || !category || amount === undefined) {
+            return res.status(400).json({ message: "All feilds are required" });
+        }
+
+        const transaction = await sql `
+      INSERT INTO transactions(user_id,title,amount,category)
+      VALUES(${user_id}, ${title}, ${amount}, ${category})
+      RETURNING *
+    `;
+
+        res.status(201).json(transaction[0]);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: "error" });
+
+    }
+}
+
 
 export const getTransaction = async(req, res) => {
     try {
