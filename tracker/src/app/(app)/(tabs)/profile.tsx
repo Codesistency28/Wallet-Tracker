@@ -14,7 +14,7 @@ import { router } from "expo-router";
 
 const ProfileScreen = () => {
   const { user } = useUser();
-    
+    const  {signOut} = useAuth()
   
   const accountOptions : accountOptionType[] = [
     {
@@ -117,7 +117,7 @@ const ProfileScreen = () => {
                 style={{
                   marginBottom: verticalScale(17)
                 }}>
-                  <TouchableOpacity onPress={} style={{flexDirection: 'row', alignItems: 'center', gap: spacingX._10}}>
+                  <TouchableOpacity onPress={()=>handlePress(item)} style={{flexDirection: 'row', alignItems: 'center', gap: spacingX._10}}>
                     <View style={{
                       height:verticalScale(44),
                       width: verticalScale(44),
