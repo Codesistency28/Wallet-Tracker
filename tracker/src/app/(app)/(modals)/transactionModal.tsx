@@ -291,6 +291,7 @@ const TransactionModal = () => {
 
           {/* expeense Category */}
 
+      
           {/* date picker  */}
 
           <View style={{ gap: spacingY._5 }}>
@@ -384,6 +385,31 @@ const TransactionModal = () => {
               }
             />
           </View>
+
+          <View style={{ gap: spacingY._10 }}>
+            <View
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                gap: spacingX._5,
+              }}
+            >
+              <Typo size={14} color={colors.neutral200}>
+                Receipt
+              </Typo>
+              <Typo size={13} color={colors.neutral500}>
+                ( optional )
+              </Typo>
+            </View>
+            <ImageUpload
+              onClear={() => setTransaction({ ...transaction, image: null })}
+              onSelect={(file) =>
+                setTransaction({ ...transaction, image: file })
+              }
+              file={transaction.image}
+              placeholder="Upload Image"
+            />
+          </View>
         </ScrollView>
       </View>
 
@@ -400,6 +426,21 @@ const TransactionModal = () => {
           borderTopWidth: 1,
         }}
       >
+        {oldTransaction?.id && !loading && (
+          <Button
+          onPress={showDeleteAlert}
+            style={{
+              backgroundColor: colors.rose,
+              paddingHorizontal: spacingX._15,
+            }}
+          >
+            <TrashIcon
+              color={colors.white}
+              size={verticalScale(24)}
+              weight="bold"
+            />
+          </Button>
+        )}
         <Button
           loading={loading}
           style={{ flex: 1 }}
