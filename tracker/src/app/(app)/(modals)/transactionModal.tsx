@@ -291,7 +291,68 @@ const TransactionModal = () => {
 
           {/* expeense Category */}
 
-      
+          {transaction.type == "expense" && (
+            <View style={{ gap: spacingY._5 }}>
+              <Typo size={14} color={colors.neutral200}>
+                Expense Category
+              </Typo>
+              {/* //dropdown here */}
+
+              <Dropdown
+                style={[
+                  {
+                    height: verticalScale(54),
+                    borderWidth: 1,
+                    borderColor: colors.neutral300,
+                    paddingHorizontal: spacingX._15,
+                    borderRadius: radius._15,
+                    borderCurve: "continuous",
+                  },
+                ]}
+                placeholderStyle={{ color: colors.white }}
+                selectedTextStyle={{
+                  color: colors.white,
+                  fontSize: verticalScale(14),
+                }}
+                iconStyle={{
+                  height: verticalScale(30),
+                  tintColor: colors.neutral300,
+                }}
+                data={Object.values(expenseCategories)}
+                maxHeight={300}
+                itemTextStyle={{ color: colors.white }}
+                itemContainerStyle={{
+                  borderRadius: radius._15,
+                  marginHorizontal: spacingX._7,
+                }}
+                containerStyle={{
+                  backgroundColor: colors.neutral900,
+                  borderRadius: radius._15,
+                  borderCurve: "continuous",
+                  paddingVertical: spacingY._7,
+                  top: 5,
+                  borderColor: colors.neutral500,
+                  shadowColor: colors.black,
+                  shadowOffset: { width: 0, height: 5 },
+                  shadowOpacity: 1,
+                  shadowRadius: 15,
+                  elevation: 5,
+                }}
+                labelField="label"
+                valueField="value"
+                value={transaction.category}
+                placeholder={"Select Category"}
+                onChange={(item) => {
+                  setTransaction({
+                    ...transaction,
+                    category: item.value || "",
+                  });
+                }}
+                activeColor={colors.neutral700}
+              />
+            </View>
+          )}
+
           {/* date picker  */}
 
           <View style={{ gap: spacingY._5 }}>
@@ -386,30 +447,6 @@ const TransactionModal = () => {
             />
           </View>
 
-          <View style={{ gap: spacingY._10 }}>
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                gap: spacingX._5,
-              }}
-            >
-              <Typo size={14} color={colors.neutral200}>
-                Receipt
-              </Typo>
-              <Typo size={13} color={colors.neutral500}>
-                ( optional )
-              </Typo>
-            </View>
-            <ImageUpload
-              onClear={() => setTransaction({ ...transaction, image: null })}
-              onSelect={(file) =>
-                setTransaction({ ...transaction, image: file })
-              }
-              file={transaction.image}
-              placeholder="Upload Image"
-            />
-          </View>
         </ScrollView>
       </View>
 
