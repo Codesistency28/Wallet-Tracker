@@ -112,6 +112,14 @@ const TransactionModal = () => {
         return
     }
 
+    const selectedWallet = wallets.find(wallet => wallet.id === walletId);
+
+  // Check if wallet exists and if amount is zero or less
+  if (selectedWallet && selectedWallet.amount <= 0) {
+    Alert.alert("Transactions", "Cannot perform transaction: wallet balance is empty.");
+    return;
+  }
+
     let transactionData: TransactionType = {
         type,
         amount,
