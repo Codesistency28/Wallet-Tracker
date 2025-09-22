@@ -1,0 +1,4 @@
+disable the dates only take past 7 days ka date and diable futre dates 
+
+
+image should dinamically pick the aount and put on the amt input 
