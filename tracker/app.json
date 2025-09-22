@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "walletTracker",
-    "slug": "walletTracker",
+    "name": "tato",
+    "slug": "tato",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./src/assets/images/icon.png",
-    "scheme": "walletTracker",
+    "scheme": "tato",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
@@ -17,7 +17,7 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.shawnferns004.walletTracker"
+      "package": "com.shawnferns004.tato"
     },
     "web": {
       "bundler": "metro",
@@ -30,12 +30,11 @@
         "expo-splash-screen",
         {
           "image": "./src/assets/images/splash-icon.png",
-          "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
       ],
-      "expo-font"
+      "expo-secure-store"
     ],
     "experiments": {
       "typedRoutes": true
